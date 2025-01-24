@@ -1,12 +1,18 @@
 {
     "builds": [
       {
-        "src": "backend/dist/index.js",
-        "use": "@vercel/node"
+        "src": "frontend/package.json",
+        "use": "@vercel/npm",
+        "config": {
+          "distDir": "frontend/dist"
+        }
       },
       {
-        "src": "frontend/dist/**",
-        "use": "@vercel/static"
+        "src": "backend/package.json",
+        "use": "@vercel/npm",
+        "config": {
+          "distDir": "backend/dist"
+        }
       }
     ],
     "routes": [
