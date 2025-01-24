@@ -1,16 +1,18 @@
 {
     "outputDirectory": "dist",
-    
+    "installCommand": "pnpm install",
     
     "builds": [
         {
-            "src": "backend/dist/index.js",
+            "src": "/backend/dist/index.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/(.*)", "dest": "backend/dist/index.js"
+            "src": "/(.*)", "dest": "/backend/dist/index.js"
         }
-    ]      
+    ]
+      
+      
 }
