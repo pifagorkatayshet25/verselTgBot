@@ -11,13 +11,17 @@ server.get('/', async (request, reply) => {
   return { message: 'Telegram Bot API работает!' };
 });
 
-server.listen({ port: 8080 }, (err, address) => {
-  if (err) {
+const startServer = async () => {
+  try {
+    await server.listen({ port: 8080 });
+    console.log(`Server listening at ${server.server.address()}`);
+  } catch (err) {
     console.error(err);
     process.exit(1);
   }
-  console.log(`Server listening at ${address}`);
-});
+};
+
+startServer();
 
 bot.launch().then(() => {
   console.log('Бот запущен!');

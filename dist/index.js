@@ -21,14 +21,17 @@ const bot = (0, bot_1.startBot)();
 server.get('/', (request, reply) => __awaiter(void 0, void 0, void 0, function* () {
     return { message: 'Telegram Bot API работает!' };
 }));
-server.listen({ port: 8080 }, (err, address) => {
-    if (err) {
+const startServer = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield server.listen({ port: 8080 });
+        console.log(`Server listening at ${server.server.address()}`);
+    }
+    catch (err) {
         console.error(err);
         process.exit(1);
     }
-    bot.launch().then(() => {
-        console.log('Бот запущен!');
-    });
-    console.log(`Server listening at ${address}`);
 });
-
+startServer();
+bot.launch().then(() => {
+    console.log('Бот запущен!');
+});
