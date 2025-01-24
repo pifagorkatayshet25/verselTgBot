@@ -26,8 +26,9 @@ server.listen({ port: 8080 }, (err, address) => {
         console.error(err);
         process.exit(1);
     }
+    bot.launch().then(() => {
+        console.log('Бот запущен!');
+    });
     console.log(`Server listening at ${address}`);
 });
-bot.launch().then(() => {
-    console.log('Бот запущен!');
-});
+
