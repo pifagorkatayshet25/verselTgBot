@@ -1,20 +1,14 @@
 {
-    "version": 2,
-    "projects": {
-      "frontend": {
-        "buildCommand": "npm run build",
-        "outputDirectory": "dist"
-      },
-      "backend": {
-        "buildCommand": "npm run build",
-        "outputDirectory": "dist",
-        "routes": [
-          {
-            "src": "/bot",
-            "dest": "/backend/dist/index.js"
-          }
-        ]
+    "builds": [
+      {
+        "src": "dist/index.js",
+        "use": "@vercel/node"
       }
-    }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "dist/index.js"
+      }
+    ]
   }
-  
