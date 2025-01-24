@@ -1,14 +1,23 @@
 {
     "builds": [
       {
-        "src": "dist/index.js",
+        "src": "backend/dist/index.js",
         "use": "@vercel/node"
+      },
+      {
+        "src": "frontend/dist/**",
+        "use": "@vercel/static"
       }
     ],
     "routes": [
       {
+        "src": "/api/(.*)",
+        "dest": "backend/dist/index.js"
+      },
+      {
         "src": "/(.*)",
-        "dest": "dist/index.js"
+        "dest": "frontend/dist/$1"
       }
     ]
   }
+  
